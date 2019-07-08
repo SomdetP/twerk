@@ -1,0 +1,22 @@
+<%= form_with(model: twerk, local: true) do |form| %>
+  <% if twerk.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(twerk.errors.count, "error") %> prohibited this twerk from being saved:</h2>
+
+      <ul>
+      <% twerk.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :twerk %>
+    <%= form.text_area :twerk %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

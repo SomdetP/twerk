@@ -1,0 +1,2 @@
+class Twerk < ApplicationRecord
+end
