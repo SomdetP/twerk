@@ -1,22 +1,9 @@
-<%= form_with(model: twerk, local: true) do |form| %>
-  <% if twerk.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(twerk.errors.count, "error") %> prohibited this twerk from being saved:</h2>
-
-      <ul>
-      <% twerk.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
-
+<%= simple_form_for(@twerk) do|f| %>
+  <%= f.error_notification %>
   <div class="field">
-    <%= form.label :twerk %>
-    <%= form.text_area :twerk %>
+    <div class="control">
+      <%= f.input :twerk, label: "Let's Twerk", input_html: {class: "textarea"}, wrapper: false, label_html: {class: "label"}, placeholder: "Twerk NOW!" %>
+    </div>
   </div>
-
-  <div class="actions">
-    <%= form.submit %>
-  </div>
+  <%= f.button :submit, class: "button is-info" %>
 <% end %>

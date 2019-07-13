@@ -4,7 +4,8 @@ class TwerksController < ApplicationController
   # GET /twerks
   # GET /twerks.json
   def index
-    @twerks = Twerk.all
+    @twerks = Twerk.all.order("created_at DESC")
+    @twerk = Twerk.new
   end
 
   # GET /twerks/1
@@ -28,7 +29,7 @@ class TwerksController < ApplicationController
 
     respond_to do |format|
       if @twerk.save
-        format.html { redirect_to @twerk, notice: 'Twerk was successfully created.' }
+        format.html { redirect_to root_path, notice: 'Yeah! Baby, That is how you Twerk.' }
         format.json { render :show, status: :created, location: @twerk }
       else
         format.html { render :new }
@@ -42,7 +43,7 @@ class TwerksController < ApplicationController
   def update
     respond_to do |format|
       if @twerk.update(twerk_params)
-        format.html { redirect_to @twerk, notice: 'Twerk was successfully updated.' }
+        format.html { redirect_to @twerk, notice: 'More Twerk More FUN!.' }
         format.json { render :show, status: :ok, location: @twerk }
       else
         format.html { render :edit }
@@ -56,7 +57,7 @@ class TwerksController < ApplicationController
   def destroy
     @twerk.destroy
     respond_to do |format|
-      format.html { redirect_to twerks_url, notice: 'Twerk was successfully destroyed.' }
+      format.html { redirect_to twerks_url, notice: 'I will miss that Twerk.' }
       format.json { head :no_content }
     end
   end
