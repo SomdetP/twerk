@@ -1,5 +1,6 @@
 class TwerksController < ApplicationController
   before_action :set_twerk, only: [:show, :edit, :update, :destroy]
+  before_action :authenticate_user!, except: [:index, :show]
 
   # GET /twerks
   # GET /twerks.json
@@ -15,7 +16,7 @@ class TwerksController < ApplicationController
 
   # GET /twerks/new
   def new
-    @twerk = Twerk.new
+    @twerk = current_user.twerks.build
   end
 
   # GET /twerks/1/edit
@@ -25,7 +26,7 @@ class TwerksController < ApplicationController
   # POST /twerks
   # POST /twerks.json
   def create
-    @twerk = Twerk.new(twerk_params)
+    @twerk = current_user.twerks.build(twerk_params)
 
     respond_to do |format|
       if @twerk.save
